@@ -23,14 +23,22 @@
     height: 550px;
 }
 .display{
-    display:flex;
+    display:inline-block;
     justify-content: flex-start;
     background-color:gray;
-    width: 400px;
+    width: 395px;
     height: 100px;
-    margin: auto;
+    margin-left: 25px;
+    padding-right: 5px;
     margin-top: 15px;
+    font-size: 90px;
+    text-align: end;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
+
+
+
 .buttons{
     display: flex;
     margin-top: 10px;
@@ -38,11 +46,15 @@
     margin-right: 25px;
     height: 400px;
 
+
 }
 button{
     height: 80px;
     width: 100px;
     border-radius: 5px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+
 
 }
 .top-buttons{
@@ -53,8 +65,8 @@ button{
 .others{
     background-color: lightskyblue;
     border-style: solid;
-
     border-color: black;
+
 }
 #numbers{
     display: flex;
@@ -67,3 +79,28 @@ button{
     border-style: solid;
     border-color: black;
 }
+.zero-dot{
+    display: flex;
+    flex-direction: row;
+    max-width: 300px;
+}
+.bot{
+    background-color: teal;
+    border-style: solid;
+    border-color: black;
+}
+.zero{
+    width: 200px;
+}
+.operations{
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    max-width: 100px;
+}
+.op{
+    background-color: orange;
+    border-style: solid;
+    border-color: black;
+}
+
