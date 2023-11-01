@@ -207,8 +207,18 @@ function completeOperation(equals){
         console.log(opSign)
         if (whichNum == true){
             if (opSign == '/'){
-                finalNum = (+(leftNum)) / (+(rightNum));
-                console.log(opSign)
+                if (rightNum == '0'){
+                    alert("You can't do that, resetting right side.");
+                    whichNum = false;
+                    leftNum = '';
+                    rightNum = '';
+                    numsEntered.splice(0, 5);
+                    return;
+                } else {
+                    finalNum = (+(leftNum)) / (+(rightNum));
+                    console.log(opSign)
+                }
+                
             } else if (opSign == '*'){
                 finalNum = +(leftNum) * +(rightNum);
                 console.log(opSign)
