@@ -11,10 +11,60 @@ const buttons = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
 const operators = document.querySelectorAll(".op");
 const equals = document.querySelector('.equals');
+const clear = document.querySelector('.clear');
+const posNeg = document.querySelector('.pos-neg');
+const decimal = document.querySelector('.decimal');
 
 buttons.forEach(changeDisplay); 
 operators.forEach(changeSide);
 completeOperation(equals);
+clear.addEventListener("click", function(e) {
+    whichNum = false;
+    numsEntered.splice(0, 5);
+    display.textContent = 0;
+    leftNum = '';
+});
+posNeg.addEventListener("click", function(e){
+    console.log(numsEntered);
+    if (numsEntered[0] == '-'){
+        numsEntered.splice(0, 1);
+        display.textContent = numsEntered.join('');
+        if (whichNum == false){
+            leftNum = numsEntered.join('');
+        } else{
+            rightNum = numsEntered.join('');
+        }
+    } else {
+        numsEntered.splice(0, 0, '-');
+        display.textContent = numsEntered.join('');
+        if (whichNum == false){
+            leftNum = numsEntered.join('');
+        } else{
+            rightNum = numsEntered.join('');
+        }
+    } 
+      
+});
+
+decimal.addEventListener("click", function(e){
+    let temp = +(numsEntered.join(''));
+    if ((temp / 100).toString().length > 6){
+        temp /= 100;
+        temp = temp.toFixed(3)
+    }else if ((temp % 100).toString().length == 6){
+        console.log("nothing");
+    }else {
+        numsEntered = (temp/100).toString().split('');
+    }
+    display.textContent = numsEntered.join('');
+    
+    if (whichNum == false){
+        leftNum = numsEntered.join('');
+    } else {
+        rightNum = numsEntered.join('');
+    }
+});
+
 function changeDisplay(button){
     button.addEventListener("click", function(){
         if (whichNum == false) {
@@ -114,6 +164,8 @@ function changeDisplay(button){
                     }
                 }else{
                     rightNum = +(numsEntered.join(''));
+                    console.log("i like being buggy")
+
                 }
     
             }
@@ -174,14 +226,10 @@ function completeOperation(equals){
             if (finalNum.toString().length > 6){
                 finalNum = finalNum.toFixed(3)
             }
-            if (finalNum < 0){
-                display.textContent = (-1 * finalNum);
-            } else {
-                display.textContent = finalNum;
-                console.log(numsEntered)
-                leftNum = String(finalNum);
-                numsEntered.splice(0, 1);
-            }
+            
+            display.textContent = finalNum;
+            leftNum = String(finalNum);
+            numsEntered.splice(0, 5);
         }
     });
 }
